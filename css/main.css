@@ -1,0 +1,97 @@
+h1 {
+    display: hidden;
+}
+
+body {
+    background: linear-gradient(-80deg, 
+    #ca72f4, #e47eea, #f472a0, #f47272, #f4a672, #f4f072, #d5f472,#72f4b5, #72f4e3, #72bbf4,
+    #ca72f4, #e47eea, #f472a0, #f47272, #f4a672) ;
+     animation: gradient 15s ease-out infinite; 
+     height: 100vh;
+     background-size: 400% 400%;
+}
+/*#f4f072, #d5f472, #47ed7f,#72f4b5, #72f4e3, #72bbf4,
+    #ca72f4, #e47eea, #f472a0, #f47272, #f4a672 */
+
+@keyframes gradient {
+    0% { background-position:  0% ;}
+
+    10% { background-position: 10% ;}
+
+    20% {background-position: 20% ;}
+
+    30% {background-position: 30% ;}
+
+    40% { background-position: 40% ;}
+
+    50% { background-position: 50% ;}
+
+    60% { background-position: 60% ;}
+
+    70% {background-position: 70% ;}
+
+    80% {background-position: 80% ;}
+
+    100% {background-position: 100% ;}
+}
+
+#room {
+    margin: 20px 100px 20px 100px;
+    padding: 10px;
+    background-color: #ca72f4;
+    border-radius: 5%;
+    border: 4px solid black;
+}
+
+#carpet {
+    height: 800px;
+    width: 800px ;
+    background: url(../images/background-carpet.svg);
+    border: 2px solid black;
+    border-radius: 500px;
+    margin: 50px;
+}
+
+#bed {
+    margin: 0px;
+    padding: 0px;
+    width: 500px;
+    height: 800px;
+    position: absolute;
+    top: 0px;
+    
+}
+
+#pillow {
+    width: 200px;
+    height: 200px;
+    rotate: -45deg;
+    position: absolute;
+    top: 330px;
+    left: 250px;
+}
+#cat{
+    width: 100px;
+    height: 100px;
+    rotate: -80px;  
+    position: absolute;
+    top: 380px;
+    left: 290px; 
+
+}
+
+#cat {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {scale: 1;}
+    50% {scale: 1.05;}
+    100% {scale: 1;}
+}
+
+#record-player {
+    width: 200px ;
+    height: 200px;
+    rotate: 125deg;
+}
