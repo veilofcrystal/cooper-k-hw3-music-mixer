@@ -43,7 +43,8 @@ body {
  }
  
  .records {
-    max-height: 110px;
+    max-width: 85px ;
+    max-height: 85px;
  }
 
 
@@ -63,24 +64,8 @@ body {
 
 
 
-
-
-.pillow {
-    background-image: url(../images/pillow.svg);
-    
-
-   
-}
-#cat{
-    height: 20%;
-    width: 20%;
-
-    rotate: -80px;  
-    
-
-}
-
 #cat {
+    
     animation: pulse 3s ease-in-out infinite;
 }
 
@@ -91,6 +76,5 @@ body {
 }
 
 #record-player {
-   
-    rotate: 125deg;
+   background: url(../images/record-player.svg) no-repeat;
 }
