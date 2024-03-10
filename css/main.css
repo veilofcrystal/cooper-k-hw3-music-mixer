@@ -35,96 +35,37 @@ body {
     100% {background-position: 100% ;}
 }
  #record-table{
-    display: flex;
-    position: absolute;
-    top: 0px; 
-    left: 200px;
-    width: 515px;
-    height: 120px;
+  
+    max-height: 120px;
     background-color: brown;
     border-radius: 10px;
     border: 3px solid black;
  }
+ 
+ .records {
+    max-width: 85px ;
+    max-height: 85px;
+ }
+
+
 #room {
-    margin: 20px 100px 20px 100px;
-    padding: 10px;
+ 
     background-color: #ca72f4;
     border-radius: 5%;
     border: 4px solid black;
+    background-image: url(../images/background-carpet.svg);
 }
 
-#star-1 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
+.star {
+
     width: 80px;
     height: 80px;
 }
 
-#star-2 {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 80px;
-    height: 80px;
-}
 
-#star-3 {
-    position: absolute;
-    top: 0px;
-    left:120px;
-    width: 80px;
-    height: 80px;
-}
-
-#star-4 {
-    position: absolute;
-    top: 0px;
-    left: 720px;
-    width: 80px;
-    height: 80px;
-}
-
-#carpet {
-    margin: 50px 50px 50px 50px;
-    height: 950px;
-    width: 950px ;
-    background: url(../images/background-carpet.svg);
-    border: 2px solid black;
-    border-radius: 500px;
-   
-}
-
-#bed {
-    margin: 0px;
-    padding: 0px;
-    width: 500px;
-    height: 800px;
-    position: absolute;
-    top: 0px;
-    left: 210px;
-    
-}
-
-#pillow {
-    width: 200px;
-    height: 200px;
-    rotate: -45deg;
-    position: absolute;
-    top: 330px;
-    left: 245px;
-}
-#cat{
-    width: 100px;
-    height: 100px;
-    rotate: -80px;  
-    position: absolute;
-    top: 380px;
-    left: 290px; 
-
-}
 
 #cat {
+    
     animation: pulse 3s ease-in-out infinite;
 }
 
@@ -135,7 +76,5 @@ body {
 }
 
 #record-player {
-    width: 200px ;
-    height: 200px;
-    rotate: 125deg;
+   background: url(../images/record-player.svg) no-repeat;
 }

@@ -22,22 +22,24 @@ Music Mixer
 
 
 
-<body class="grid-con">
-<!--<section id="room" class="col-span-2-11"> -->
-  <header>
-    <nav id="record-table">
-      <img id="blue-record" class="records" src="images/record-blue.svg" alt="blue record">
-      <img id="pink-record" class="records" src="images/record-pink.svg" alt="pink-record">
-      <img id="purple-record" class="records" src="images/record-purple.svg" alt="purple-record">
-    </nav> 
-   
-  </header>
-  
-<div> <img class="star" id="star-1" src="images/star-string-light.svg" alt="star string light"></div>
-<div id="carpet" class="col-span-full"></div>
+<body>
 
-<div>
-    <svg id="bed" data-name="bed" class="col-span-4-5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 365.4 391.15">
+  <header class="grid-con">
+    <img class="star col-start-1 col-span-1 m-col-start-1 m-col-span-1 l-col-start-1 l-col-span-1" id="star-1" src="images/star-string-light.svg" alt="star string light">
+    
+    <img class="star col-start-2 col-span-1  m-col-start-5 m-col-span-1 l-col-start-5 l-col-span-1" id="star-2" src="images/star-string-light.svg" alt="star string light">
+
+    <img class="star col-start-3 col-span-1 m-col-start-8 m-col-span-1 l-col-start-8 l-col-span-1" id="star-3" src="images/star-string-light.svg" alt="star string light">
+    
+    <img class="star col-start-4 col-span-1 m-col-start-12 m-col-span-1 l-col-start-12 l-col-span-1" id="star-4" src="images/star-string-light.svg" alt="star string light">
+  </header>
+
+  <section id="room" class="grid-con">
+
+
+
+<div class="col-start-1 col-span-2 m-col-start-1 m-col-span-6 l-col-start-1 l-col-span-6">
+    <svg id="bed" data-name="bed"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 365.4 391.15">
         <defs>
     <style>
       .uuid-b4582b53-0245-4bd7-97d7-0efd4bd0ff56 {
@@ -343,10 +345,9 @@ Music Mixer
   </g>
 </svg>
 
-
-
+<!--
 <svg id="pillow" data-name="pillow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 516 516">
-    
+-->  
     
     
     <defs>
@@ -383,10 +384,10 @@ Music Mixer
     </g>
   </g>
 </svg>
+</div>
 
 
-
-    <svg version="1.1" id="cat"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <svg version="1.1" id="cat"  class="col-start-4 col-span-1 m-col-start-10 m-col-span-2 l-col-start-10 l-col-span-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 391.1 384.8" style="enable-background:new 0 0 391.1 384.8;" xml:space="preserve">
     
 
@@ -689,66 +690,30 @@ Music Mixer
 </g>
 </svg>
 
-</div>
-<div> <img class="star" id="star-2" src="images/star-string-light.svg" alt="star string light"></div>
-<div> <img class="star" id="star-3" src="images/star-string-light.svg" alt="star string light"></div>
 
-<div class="col-span-9-11 row-start-8">
 
-    <svg id="record-player" data-name="Record Player" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432.64 272.57">
-        <defs>
-          <style>
-            .cls-1 {
-              fill: none;
-            }
-      
-            .cls-1, .cls-2, .cls-3, .cls-4 {
-              stroke: #231f20;
-              stroke-miterlimit: 10;
-              stroke-width: 3px;
-            }
-      
-            .cls-2 {
-              fill: #414042;
-            }
-      
-            .cls-3 {
-              fill: #231f20;
-            }
-      
-            .cls-4 {
-              fill: #fff;
-            }
-      
-            .cls-5 {
-              fill: #02a3aa;
-              stroke-width: 0px;
-            }
-          </style>
-        </defs>
-        <g>
-          <rect class="cls-5" x="74.74" y="30.19" width="356.4" height="240.88" rx="29.09" ry="29.09"/>
-          <rect class="cls-1" x="74.74" y="30.19" width="356.4" height="240.88" rx="29.09" ry="29.09"/>
-        </g>
-        <ellipse class="cls-3" cx="239.02" cy="147.39" rx="108.85" ry="104.57"/>
-        <circle class="cls-4" cx="239.32" cy="146.37" r="9.41"/>
-        <circle class="cls-4" cx="99.86" cy="197.63" r="4.33"/>
-        <circle class="cls-4" cx="99.86" cy="225" r="4.33"/>
-        <polygon class="cls-2" points="364.25 59.78 386.59 67.04 372.07 206.7 364.25 59.78"/>
-        <polygon class="cls-2" points="353.31 208.77 370.39 202.16 353.31 195.86 353.31 208.77"/>
-        <circle class="cls-2" cx="239.32" cy="146.37" r="4.33"/>
-      </svg>
+
+<div id="record-table" class=" col-start-1 col-span-3 m-col-start-1 m-col-span-5 l-col-start-1 l-col-span-5">
+  <img id="blue-record" class="records " src="images/record-blue.svg" alt="blue record">
+  <img id="pink-record" class="records" src="images/record-pink.svg" alt="pink-record">
+  <img id="purple-record" class="records" src="images/record-purple.svg" alt="purple-record">
+</div> 
+
+
+
+<div id="record-player" class="col-start-4 col-span-1 m-col-start-9 m-col-span-2">
+
+   
 </div>
 
-<div> <img class="star" id="star-4" src="images/star-string-light.svg" alt="star string light"></div>
-<!--</section>-->
+</section>
 
 
 <footer>
 
 </footer>
 
-<link href="js/main.js" rel="stylesheet">
+<script src="js/main.js"></script>
 
 </body>
 
