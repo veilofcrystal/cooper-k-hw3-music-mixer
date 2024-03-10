@@ -1,12 +1,12 @@
-let theRecords = document.querySelectorAll(".records"),
-    recordTable= document.querySelector("#record-table"),
-    dropZone= document.querySelectorAll('#record-player'),
+let dragItems= document.querySelectorAll('.drag-item');
+   let recordTable= document.querySelector('#record-table');
+   let dropZone= document.querySelector('#drop-zone');
 
-    draggedRecord;
+   let draggedItem;
 
     function handleStartDrag(){
         console.log('dragged record:', this);
-        draggedRecord=this;
+        draggedItem=this.cloneNode(true);
     }
 
      function handleDragOver(event){
@@ -18,14 +18,14 @@ let theRecords = document.querySelectorAll(".records"),
         console.log('handleDrop function called');
         event.preventDefault();
         console.log('dropped onto record player');
-        if(!this.hasChildNodes()&&!draggedRecord.parentNode.classList.contains('record-table')){
-            this.appendChild(draggedRecord);
+        if(!this.hasChildNodes()&&!draggedItem.parentNode.classList.contains('record-table')){
+            this.appendChild(draggedItem);
         }
      }
 
-     theRecords.forEach(record => record.addEventListener("dragstart", handleStartDrag));
+     dragItems.forEach(record => record.addEventListener("dragstart", handleStartDrag));
 
-     dropZone.forEach(zone => {
-        zone.addEventListener('dragover', handleDragOver);
-        zone.addEventListener('drop', handleDrop);
-     });
+     
+        dropZone.addEventListener('dragover', handleDragOver);
+        dropZone.addEventListener('drop', handleDrop);
+     
