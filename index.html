@@ -54,25 +54,39 @@ Music Mixer
 
 
 <div id="record-table" class="col-start-1 col-span-3 m-col-start-2 m-col-span-4 l-col-start-2 l-col-span-4">
-  <img data-key="r-1" id="blue-record" class="records drag-item " draggable="true" src="images/record-blue.svg" alt="blue record">
-  <img data-key="r-2" id="pink-record" class="records drag-item" draggable="true" src="images/record-pink.svg" alt="pink-record">
-  <img data-key="r-3" id="purple-record" class="records drag-item" draggable="true" src="images/record-purple.svg" alt="purple-record">
+  <img data-key="r-1" data-trackref="Good-Morning" id="blue-record" class="records drag-item " draggable="true" src="images/record-blue.svg" alt="blue record">
+  <img data-key="r-2" data-trackref="In-My-Dreams" id="pink-record" class="records drag-item" draggable="true" src="images/record-pink.svg" alt="pink-record">
+  <img data-key="r-3" data-trackref="The-Process" id="purple-record" class="records drag-item" draggable="true" src="images/record-purple.svg" alt="purple-record">
 </div> 
 
 
 
-<div id="record-player" class=" col-start-4 col-span-1 m-col-start-6 m-col-span-2 l-col-start-6 l-col-span-2">
+<div id="record-player" class=" drop-zone col-start-4 col-span-1 m-col-start-6 m-col-span-2 l-col-start-6 l-col-span-2">
 
-   <div id="drop-zone"></div>
+
 </div>
 
 </section>
-<audio data-key="r-1" src="audio/Good Morning.mp3"></audio>
-<audio data-key="r-2" src="audio/In My Dreams.mp3"></audio>
-<audio data-key="r-3" src="audio/The Process.mp3"></audio>
+<audio class="audio" data-key="r-1" src="audio/Good-Morning.mp3"></audio>
+<audio class="audio" data-key="r-2" src="audio/In-My-Dreams.mp3"></audio>
+<audio class="audio" data-key="r-3" src="audio/The-Process.mp3"></audio>
 
 <footer>
+  <section class="audio-controls">
+    <button id="playButton">play</button>
+    <button id="pauseButton">pause</button>
+    <button id="rewindButton">rewind</button>
 
+    <div id="volumeAmt"></div>
+
+    <input
+    id="volumeControl"
+    type="range"
+    min="0"
+    max="100"
+    step="1"
+    >
+</section>
 </footer>
 
 <script src="js/main.js"></script>
