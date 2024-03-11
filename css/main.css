@@ -253,7 +253,8 @@ body {
    background: url(../images/record-player.svg) no-repeat;
 }
 
-#drop-zone {
+.drop-zone {
     display: flex;
-    max-height: 120px;
+    max-height: 150px;
+    max-width: 150px;
 }
