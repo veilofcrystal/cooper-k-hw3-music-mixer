@@ -55,14 +55,24 @@ function handleDragOver(event) {
 }
 
 function handleDrop(event) {
-    console.log('handleDrop function called');
     event.preventDefault();
+    console.log('handleDrop function called');
     console.log('dropped onto record player');
 
-    if (!dropZone.hasChildNodes()) {
+  
         let draggedItemId = event.dataTransfer.getData("text/plain");
         let draggedItem = document.getElementById(draggedItemId);
 
+// If there are no child nodes in the drop zone, proceed
+        if (!dropZone.hasChildNodes()) {
+// Clone the dragged item
+            let clonedItem= draggedItem.cloneNode(true);
+ // Hide the original dragged item
+            draggedItem.style.visibility = 'hidden';
+
+            dropZone.appendChild(clonedItem)
+
+         
         // Find the corresponding audio element
         let audioId = draggedItem.getAttribute('data-key');
         console.log('Audio Id:', audioId);
@@ -79,7 +89,7 @@ function handleDrop(event) {
             currentAudio.currentTime= 0;
             currentAudio.play();
         }
-        dropZone.appendChild(draggedItem);
+  
     }
 }
 
