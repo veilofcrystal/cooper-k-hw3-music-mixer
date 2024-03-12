@@ -65,16 +65,19 @@ function handleDrop(event) {
 
         // Find the corresponding audio element
         let audioId = draggedItem.getAttribute('data-key');
+        console.log('Audio Id:', audioId);
         let audio = document.querySelector(`.audio[data-key="${audioId}"]`);
         console.log('Audio element:', audio);
 
         if (audio) {
+            console.log('found audio element', audio);
             if (currentAudio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
             }
             currentAudio = audio;
-            loadAudio.call(audio);
+            currentAudio.currentTime= 0;
+            currentAudio.play();
         }
         dropZone.appendChild(draggedItem);
     }
