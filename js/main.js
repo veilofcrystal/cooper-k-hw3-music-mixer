@@ -1,6 +1,6 @@
 const dragItems = document.querySelectorAll('img');
-const dropZone = document.querySelector('.drop-zone');
-const theAudios = document.querySelectorAll('.audio');
+const dropZone = document.querySelector('#drop-zone');
+const theAudios = document.querySelectorAll('#audio');
 
 
 const pauseButton = document.querySelector('#pauseButton');
@@ -20,25 +20,29 @@ function handleDragOver(event) {
 
 function handleDrop(event) {
     event.preventDefault();
-    console.log('handleDrop function called');
-    console.log('dropped onto record player');
+    // console.log('handleDrop function called');
+    // console.log('dropped onto record player');
 
     let draggedItemId = event.dataTransfer.getData("text/plain");
-    console.log('draggedItemId:', draggedItemId);
+    // console.log('draggedItemId:', draggedItemId);
     
     let draggedItem = document.querySelector(`[data-trackref="${draggedItemId}"]`);
-    console.log('draggedItem:', draggedItem);
+    // console.log('draggedItem:', draggedItem);
 
     if (draggedItem) {
+        console.log('found item');
         // If there are no child nodes in the drop zone, proceed
-        if (!dropZone.hasChildNodes()) {
+        // console.log(!dropZone.hasChildNodes());
+        if (! dropZone.children.length) { // this is false, when should be true
+            console.log('here????');
             // Clone the dragged item
             let clonedItem = draggedItem.cloneNode(true);
+            this.appendChild(clonedItem);
             // Hide the original dragged item
         
 
             // Call loadAudio with the dropped record
-            playAudio(clonedItem);
+           // loadAudio(clonedItem);
         }
     } else {
         console.log('No dragged item found.');
@@ -46,15 +50,15 @@ function handleDrop(event) {
 }
 
 
-function loadAudio(audioElements, trackRef) {
+function loadAudio(audioElement, trackRef) {
+    console.log(audioElement);
     console.log('loadAudio() called');
     let audioUrl = `audio/${trackRef}.mp3`;
     console.log('Audio URL:', audioUrl);
     
     // Use theAudios NodeList defined earlier
-    if (audioElements.length > 0) {
+    if (audioElement) {
         // Access the first audio element in the NodeList
-        let audioElement = audioElements[0];
         console.log('audio element found:', audioElement);
         audioElement.src = audioUrl;
         console.log('audio src set:', audioElement.src);
@@ -108,10 +112,10 @@ dragItems.forEach(dragItem => {
     dragItem.addEventListener('dragstart', handleStartDrag);
 });
 
-dragItems.forEach(dragItem => {
-    dragItem.addEventListener('drop', () => {
-        playAudio(dragItem.parentNode); // Get the parent node (the record) and pass it to loadAudio
-    });
-});
+// dragItems.forEach(dragItem => {
+    // dragItem.addEventListener('drop', () => {
+        // loadAudio(dragItem.parentNode); // Get the parent node (the record) and pass it to loadAudio
+    // });
+// });
 pauseButton.addEventListener('click', pauseAudio);
 volSlider.addEventListener('change', setVolume);
