@@ -12,7 +12,7 @@ body {
     background: linear-gradient(-80deg, 
     #ca72f4, #e47eea, #f472a0, #f47272, #f4a672, #f4f072, #d5f472,#72f4b5, #72f4e3, #72bbf4,
     #ca72f4, #e47eea, #f472a0, #f47272, #f4a672) ;
-     animation: gradient 15s ease-out infinite; 
+     animation: gradient 35s ease-in-out infinite; 
      height: 100vh;
      background-size: 400% 400%;
 }
@@ -47,7 +47,7 @@ body {
  display: grid;
  grid-template-columns: repeat(4, minmax(0, 1fr));
  grid-column-gap: 16px;
- max-width: 900px;
+ max-width: 1100px;
  margin: 0 auto;
  padding: 0px 15px 15px 15px;
  }
@@ -202,21 +202,22 @@ body {
  #record-table{
     display: flex;
     justify-content: center;
-    max-height: 120px;
+    height: 120px;
+    margin-top: 50px;
     background-color: brown;
     border-radius: 10px;
     border: 3px solid black;
  }
  
- .records {
-    max-width: 60px;
-    max-height: 60px;
+ .drag-item {
+    width: 60px;
+    height: 60px;
     margin: 10px;
  }
 
 
 #room {
-    
+
     background-color: #ca72f4;
     border-radius: 5%;
     border: 4px solid black;
@@ -247,14 +248,12 @@ body {
     100% {scale: 1;}
 }
 
-#record-player {
-    display: flex;
-    max-height: 120px;
-   background: url(../images/record-player.svg) no-repeat;
-}
+
+
 
 .drop-zone {
     display: flex;
-    max-height: 150px;
-    max-width: 150px;
+    height: 150px;
+    width: 150px;
+    background: url(../images/record-player.svg) no-repeat;
 }
