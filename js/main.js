@@ -1,15 +1,18 @@
-const dragItems = document.querySelectorAll('img');
-const dropZone = document.querySelector('#drop-zone');
-const theAudios = document.querySelectorAll('#audio');
+const dragItems = document.querySelectorAll('img'),
+ dropZone = document.querySelector('#drop-zone'),
+ theAudios = document.querySelectorAll('#audio'),
+ recordTable= document.querySelector('#record-table'),
+ pauseButton = document.querySelector('#pauseButton'),
+ volSlider = document.querySelector('#volumeControl'),
+ volAmount = document.querySelector('#volumeAmt');
 
-
-const pauseButton = document.querySelector('#pauseButton');
-const volSlider = document.querySelector('#volumeControl');
-const volAmount = document.querySelector('#volumeAmt');
+let previousDroppedItem = null;
+let originalParentNode = null;
 
 function handleStartDrag(event) {
     console.log('dragged record:', this);
     event.dataTransfer.setData("text/plain", this.getAttribute('data-trackref'));
+    originalParentNode = this.parentNode;
 }
 
 function handleDragOver(event) {
@@ -20,29 +23,32 @@ function handleDragOver(event) {
 
 function handleDrop(event) {
     event.preventDefault();
-    // console.log('handleDrop function called');
-    // console.log('dropped onto record player');
 
     let draggedItemId = event.dataTransfer.getData("text/plain");
-    // console.log('draggedItemId:', draggedItemId);
-    
     let draggedItem = document.querySelector(`[data-trackref="${draggedItemId}"]`);
-    // console.log('draggedItem:', draggedItem);
 
     if (draggedItem) {
-        console.log('found item');
-        // If there are no child nodes in the drop zone, proceed
-        // console.log(!dropZone.hasChildNodes());
-        if (! dropZone.children.length) { // this is false, when should be true
-            console.log('here????');
-            // Clone the dragged item
-            let clonedItem = draggedItem.cloneNode(true);
-            this.appendChild(clonedItem);
-            // Hide the original dragged item
-        
+        if (!dropZone.children.length) {
+            // Create an audio element
+            let audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', `audio/${draggedItemId}.mp3`);
+            audioElement.setAttribute('class', 'audio-overlay'); // Add a class to style it
+            audioElement.setAttribute('autoplay', ''); // Autoplay the audio
 
-            // Call loadAudio with the dropped record
-           // loadAudio(clonedItem);
+            // Create a wrapper div to hold both the image and audio elements
+            let wrapperDiv = document.createElement('div');
+            wrapperDiv.appendChild(draggedItem.cloneNode(true)); // Append the image
+            wrapperDiv.appendChild(audioElement); // Append the audio
+            dropZone.appendChild(wrapperDiv);
+
+            // Hide the original dragged item
+            draggedItem.style.display = 'none';
+
+            // Reset previous dropped item (if any)
+            if (previousDroppedItem) {
+                previousDroppedItem.style.display = 'block'; // Show the previous dropped item
+            }
+            previousDroppedItem = draggedItem; // Update the previous dropped item
         }
     } else {
         console.log('No dragged item found.');
@@ -50,44 +56,17 @@ function handleDrop(event) {
 }
 
 
-function loadAudio(audioElement, trackRef) {
-    console.log(audioElement);
-    console.log('loadAudio() called');
-    let audioUrl = `audio/${trackRef}.mp3`;
-    console.log('Audio URL:', audioUrl);
-    
-    // Use theAudios NodeList defined earlier
-    if (audioElement) {
-        // Access the first audio element in the NodeList
-        console.log('audio element found:', audioElement);
-        audioElement.src = audioUrl;
-        console.log('audio src set:', audioElement.src);
+function handleDragLeave(event) {
+    event.preventDefault();
 
-        audioElement.addEventListener('play', function() {
-            console.log('Audio playback started');
-        });
+    let draggedItemId = event.dataTransfer.getData("text/plain");
+    let draggedItem = document.querySelector(`[data-trackref="${draggedItemId}"]`);
 
-        audioElement.addEventListener('pause', function() {
-            console.log('Audio playback paused');
-        });
-
-        audioElement.addEventListener('ended', function() {
-            console.log('Audio playback ended');
-        });
-
-        audioElement.addEventListener('error', function() {
-            console.error('Error during audio playback');
-        });
-
-        audioElement.load();
-        audioElement.play();
-    } else {
-        console.log('No audio element found.');
+    // Revert the dragged item to its original position
+    if (originalParentNode && draggedItem) {
+        originalParentNode.appendChild(draggedItem);
     }
 }
-
-
-
 
 function pauseAudio() {
     theAudios.forEach(audio => audio.pause());
@@ -105,17 +84,24 @@ function displayVolume() {
     volAmount.innerText = volSlider.value;
 }
 
-dropZone.addEventListener('dragover', handleDragOver);
-dropZone.addEventListener('drop', handleDrop);
-
 dragItems.forEach(dragItem => {
     dragItem.addEventListener('dragstart', handleStartDrag);
 });
 
-// dragItems.forEach(dragItem => {
-    // dragItem.addEventListener('drop', () => {
-        // loadAudio(dragItem.parentNode); // Get the parent node (the record) and pass it to loadAudio
-    // });
-// });
+
+// Add event listener to each img element to handle dragging it back to its original position
+dragItems.forEach(dragItem => {
+    dragItem.addEventListener('dragstart', handleStartDrag);
+});
+
+
+dropZone.addEventListener('dragover', handleDragOver);
+dropZone.addEventListener('drop', handleDrop);
+
+dropZone.addEventListener('dragleave', handleDragLeave);
+
+recordTable.addEventListener('dragover', handleDragOver);
+recordTable.addEventListener('drop', handleDrop);
+
 pauseButton.addEventListener('click', pauseAudio);
 volSlider.addEventListener('change', setVolume);
