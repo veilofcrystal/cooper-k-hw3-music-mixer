@@ -20,7 +20,6 @@ function handleDragOver(event) {
     console.log('dragged over zone');
 }
 
-
 function handleDrop(event) {
     event.preventDefault();
 
@@ -28,30 +27,78 @@ function handleDrop(event) {
     let draggedItem = document.querySelector(`[data-trackref="${draggedItemId}"]`);
 
     if (draggedItem) {
-        if (!dropZone.children.length) {
-            // Create an audio element
-            let audioElement = document.createElement('audio');
-            audioElement.setAttribute('src', `audio/${draggedItemId}.mp3`);
-            audioElement.setAttribute('class', 'audio-overlay'); // Add a class to style it
-            audioElement.setAttribute('autoplay', ''); // Autoplay the audio
+        // Pause all audio elements
+        pauseAudio();
 
-            // Create a wrapper div to hold both the image and audio elements
-            let wrapperDiv = document.createElement('div');
-            wrapperDiv.appendChild(draggedItem.cloneNode(true)); // Append the image
-            wrapperDiv.appendChild(audioElement); // Append the audio
-            dropZone.appendChild(wrapperDiv);
-
-            // Hide the original dragged item
-            draggedItem.style.display = 'none';
-
-            // Reset previous dropped item (if any)
-            if (previousDroppedItem) {
-                previousDroppedItem.style.display = 'block'; // Show the previous dropped item
-            }
-            previousDroppedItem = draggedItem; // Update the previous dropped item
+        // If there is a previously dropped item, move it back to the record table
+        if (previousDroppedItem) {
+            // Move the previous dropped item back to the record table
+            originalParentNode.appendChild(previousDroppedItem.wrapperDiv);
+            previousDroppedItem.audioElement.pause(); // Pause the audio associated with the previous dropped item
+            // Reattach the drag event listener to the dragged item
+            previousDroppedItem.dragItem.addEventListener('dragstart', handleStartDrag);
         }
+
+        // Create an audio element
+        let audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', `audio/${draggedItemId}.mp3`);
+        audioElement.setAttribute('class', 'audio-overlay');
+        audioElement.setAttribute('autoplay', '');
+
+        // Create a wrapper div to hold both the image and audio elements
+        let wrapperDiv = document.createElement('div');
+        wrapperDiv.appendChild(draggedItem.cloneNode(true)); // Append the image
+        wrapperDiv.appendChild(audioElement); // Append the audio
+
+        // Append the wrapper div to the drop zone
+        dropZone.innerHTML = ''; // Clear drop zone before adding new item
+        dropZone.appendChild(wrapperDiv);
+
+        // Hide the original dragged item
+        draggedItem.style.display = 'none';
+
+        // Store the wrapper div, audio element, and dragged item temporarily
+        previousDroppedItem = { wrapperDiv, audioElement, dragItem: draggedItem };
     } else {
         console.log('No dragged item found.');
+    }
+}
+
+function pauseAudio() {
+    theAudios.forEach(audio => audio.pause());
+}
+
+
+
+
+function addDraggedItemToDropZone(draggedItem) {
+    // Create an audio element
+    let audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', `audio/${draggedItem.getAttribute('data-trackref')}.mp3`);
+    audioElement.setAttribute('class', 'audio-overlay'); // Add a class to style it
+    audioElement.setAttribute('autoplay', ''); // Autoplay the audio
+
+    // Create a wrapper div to hold both the image and audio elements
+    let wrapperDiv = document.createElement('div');
+    wrapperDiv.appendChild(draggedItem.cloneNode(true)); // Append the image
+    wrapperDiv.appendChild(audioElement); // Append the audio
+    dropZone.appendChild(wrapperDiv);
+
+    // Hide the original dragged item
+    draggedItem.style.display = 'none';
+
+    // Reset previous dropped item (if any)
+    if (previousDroppedItem) {
+        previousDroppedItem.style.display = 'block'; // Show the previous dropped item
+    }
+    previousDroppedItem = draggedItem; // Update the previous dropped item
+}
+
+function movePreviousDraggedItemToRecordTable() {
+    if (previousDroppedItem) {
+        // Move the previous dragged item back to its original position on the record table
+        originalParentNode.appendChild(previousDroppedItem);
+        previousDroppedItem = null; // Reset the previous dropped item
     }
 }
 
