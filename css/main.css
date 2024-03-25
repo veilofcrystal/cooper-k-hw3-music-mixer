@@ -1,15 +1,9 @@
-h1 {
-    display: inline;
-    color: green;
-    margin: 30px;
-    font-family:'Times New Roman', Times, serif;
-}
 
 
 body {
     margin: 0px;
     padding: 0px;
-    background: linear-gradient(-80deg, 
+    background: linear-gradient(-33deg, 
     #ca72f4, #e47eea, #f472a0, #f47272, #f4a672, #f4f072, #d5f472,#72f4b5, #72f4e3, #72bbf4,
     #ca72f4, #e47eea, #f472a0, #f47272, #f4a672) ;
      animation: gradient 35s ease-in-out infinite; 
@@ -41,13 +35,41 @@ body {
     100% {background-position: 100% ;}
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+
+h1 {
+    display: inline-block;
+    text-align: center;
+    margin: 30px;
+    font-family: cursive;
+    font-size: 66px;
+    padding: 15px;
+    background-color: rgb(128, 0, 128, 0.5);
+    border-radius: 100px;
+    box-shadow: 0 0 111px 22px rgb(128, 0, 128);
+    animation: fade 11s ease-out infinite;
+}
+
+@keyframes fade {
+    0%{ opacity: 1;}
+
+    50%{ opacity: 0.5;}
+
+    100% { opacity: 1;}
+
+}
 
 
  .grid-con { 
  display: grid;
  grid-template-columns: repeat(4, minmax(0, 1fr));
  grid-column-gap: 16px;
- max-width: 1200px;
+ max-width: 1111px;
  margin: 0 auto;
  padding: 0px 15px 15px 15px;
  }
@@ -147,6 +169,7 @@ body {
  
     .grid-con { 
        display: grid; 
+       max-width: 1200px;
        grid-template-columns: repeat(12, minmax(0, 1fr));
        grid-column-gap: 16px;
        padding: 0px 15px 15px 15px;
@@ -219,9 +242,11 @@ body {
 #room {
 
     background-color: #ca72f4;
-    border-radius: 5%;
-    border: 4px solid black;
+    padding:10px;
+    border: 7px solid black;
+    border-radius: 33px;
     background-image: url(../images/background-carpet.svg);
+    box-shadow: 0 0 111px 33px purple;
 }
 
 .star {
@@ -248,7 +273,12 @@ body {
     100% {scale: 1;}
 }
 
-
+.audio-controls {
+    width:200px;
+    margin: 20px 120px 20px 120px;
+    display: block;
+    justify-content: center;
+}
 
 
 #drop-zone {
@@ -259,4 +289,24 @@ body {
     height: 120px;
     width: 120px;
     background: url(../images/record-player.svg) no-repeat;
+}
+
+#drop-zone-2 {
+    display: flex;
+    justify-content: center;
+    padding-left: 13px;
+    padding-bottom: 25px;
+    height: 120px;
+    width: 120px;
+    background: url(../images/record-player-2.svg) no-repeat;
+}
+
+#drop-zone-3 {
+    display: flex;
+    justify-content: center;
+    padding-left: 13px;
+    padding-bottom: 25px;
+    height: 120px;
+    width: 120px;
+    background: url(../images/record-player-3.svg) no-repeat;
 }

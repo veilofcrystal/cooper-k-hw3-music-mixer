@@ -22,7 +22,9 @@ Music Mixer
 
 <body>
 
-  <header class="grid-con">
+  <header>
+
+    <div  class="grid-con">
     <img class="star col-start-1 col-span-1 m-col-start-1 m-col-span-1 l-col-start-1 l-col-span-1" id="star-1" src="images/star-string-light.svg" alt="star string light">
     
     <img class="star col-start-2 col-span-1  m-col-start-5 m-col-span-1 l-col-start-5 l-col-span-1" id="star-2" src="images/star-string-light.svg" alt="star string light">
@@ -30,8 +32,9 @@ Music Mixer
     <img class="star col-start-3 col-span-1 m-col-start-8 m-col-span-1 l-col-start-8 l-col-span-1" id="star-3" src="images/star-string-light.svg" alt="star string light">
     
     <img class="star col-start-4 col-span-1 m-col-start-12 m-col-span-1 l-col-start-12 l-col-span-1" id="star-4" src="images/star-string-light.svg" alt="star string light">
+  </div>
 
-    <h1 class=" col-start-1 col-span-4 m-col-start-4 m-col-span-6 l-col-start-4 l-col-span-6">Welcome to the Chill Zone</h1>
+    <div class="container"><h1 class="header">Welcome to the Chill Zone</h1></div>
   </header>
 
   <section id="room" class="grid-con">
@@ -44,34 +47,34 @@ Music Mixer
 </div>
 
 
-<div id="cat"  class="col-start-3 col-span-1 m-col-start-6 m-col-span-2 l-col-start-6 l-col-span-2"> 
+<div id="cat"  class="col-start-3 col-span-1 m-col-start-6 m-col-span-1 l-col-start-6 l-col-span-2"> 
 <img src="images/sleepy-cat.svg" alt="cat sleeping">
 </div>
 
 
 
-<audio id="audio" class="drag-item track-ref" src="audio/GoodMorning.mp3" controls loop></audio>
+<audio id="audio" class="drag-item track-ref" src="audio/GoodMorning.mp3" loop></audio>
 
 
 <div id="record-table" class="col-start-1 col-span-3 m-col-start-2 m-col-span-4 l-col-start-2 l-col-span-4">
-  <img class=" drag-item track-ref " draggable="true" src="images/record-blue.svg" alt="blue record"  data-trackref="GoodMorning" >
-  <img class=" drag-item track-ref" draggable="true" src="images/record-pink.svg" alt="pink-record" data-trackref="InMyDreams" >
-  <img  class="drag-item track-ref" draggable="true" src="images/record-purple.svg" alt="purple-record" data-trackref="TheProcess">
+  <img class=" drag-item track-ref " draggable="true" src="images/record-blue.svg" alt="blue record"  data-trackref="drum-track" >
+  <img class=" drag-item track-ref" draggable="true" src="images/record-pink.svg" alt="pink-record" data-trackref="keys" >
+  <img  class="drag-item track-ref" draggable="true" src="images/record-purple.svg" alt="purple-record" data-trackref="strings">
 </div> 
 
 
-
-<div id="drop-zone" class=" col-start-4 col-span-1 m-col-start-6 m-col-span-2 l-col-start-6 l-col-span-2">
-
-
-</div>
+<container id=" player-stand" class=" col-start-2 col-span-2 m-col-start-6 m-col-span-4 l-col-start-6 l-col-span-4">
+<div id="drop-zone" class="drop-zone"></div>
+<div id="drop-zone-2"  class="drop-zone"></div>
+<div id="drop-zone-3"  class="drop-zone"></div>
+</container>
 
 </section>
 
 
 
 <footer class="grid-con">
-  <section class="audio-controls col-start-1 col-span-4 m-col-start-5 m-col-span-4 l-col-start-5 l-col-span-4">
+  <section class="audio-controls col-start-2 col-span-2 m-col-start-5 m-col-span-6 l-col-start-5 l-col-span-6">
     <button id="playButton">play</button>
     <button id="pauseButton">pause</button>
     <button id="rewindButton">rewind</button>
