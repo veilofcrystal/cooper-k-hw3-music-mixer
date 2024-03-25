@@ -1,5 +1,5 @@
 const dragItems = document.querySelectorAll('img'),
- dropZone = document.querySelector('#drop-zone'),
+ dropZone = document.querySelector('.drop-zone'),
  theAudios = document.querySelectorAll('audio'),
  recordTable= document.querySelector('#record-table'),
  playBtn = document.querySelector('#playButton'),
