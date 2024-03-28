@@ -38,16 +38,16 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 
 h1 {
     display: inline-block;
     text-align: center;
-    margin: 30px;
+    margin: 20px;
     font-family: cursive;
-    font-size: 66px;
+    font-size: 60px;
     padding: 15px;
     background-color: rgb(128, 0, 128, 0.5);
     border-radius: 100px;
@@ -235,7 +235,7 @@ h1 {
  .drag-item {
     width: 72px;
     height: 72px;
-    margin: 11px;
+    margin: 5px;
  }
 
 
@@ -284,18 +284,21 @@ h1 {
 #drop-zone {
     display: flex;
     justify-content: center;
-    padding-left: 13px;
-    padding-bottom: 25px;
+    margin-left: 10px;
+    margin-top: 0px;
+    padding: 10px;
     height: 120px;
     width: 120px;
     background: url(../images/record-player.svg) no-repeat;
 }
 
+
 #drop-zone-2 {
     display: flex;
     justify-content: center;
-    padding-left: 13px;
-    padding-bottom: 25px;
+    margin-top: 7px;
+
+    margin-left: 10px;
     height: 120px;
     width: 120px;
     background: url(../images/record-player-2.svg) no-repeat;
@@ -304,9 +307,13 @@ h1 {
 #drop-zone-3 {
     display: flex;
     justify-content: center;
-    padding-left: 13px;
-    padding-bottom: 25px;
+    margin-right: 30px;
+    margin-top: 7px;
     height: 120px;
     width: 120px;
     background: url(../images/record-player-3.svg) no-repeat;
+}
+
+#table {
+    background-color: black;
 }
